@@ -1,26 +1,64 @@
-<h2>Log in</h2>
+<h2 style="margin:50px 0; text-align:center;">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "students/shared/error_messages", resource: resource %>
+  <style>
+    .field{
+      margin:0 auto;
+      width:25%;
+    }
+    .field2{
+      margin-left:43%;
+      margin-bottom:40px;
+      width:25%;
+    }
+    .label{
+      text-align:center;
+    }
+
+    .form{
+      width:100%;
+      margin-bottom:40px;
+    }
+
+    .form2{
+      width:100%;
+      margin-bottom:10px;
+    }
+  </style>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p class="label">登録しているメールアドレス</p>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form"%>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <p class="label">パスワード</p>
+    <%= f.password_field :password, autocomplete: "current-password",class:"form2"%>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field2">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :ログインを記憶する %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="action">
+  <%= f.submit "登録",class: "submit"%><br>
+  <%= link_to "登録されていない方はこちら",new_student_registration_path %>
   </div>
+  <style>
+    .submit{
+      color:white;
+      height: 50px;
+      width:150px;
+      border-radius: 20px;
+      background:#911;
+      margin-bottom:20px;
+    }
+    .action{
+      text-align:center;dd
+      display:block;
+    }
+  </style>
 <% end %>
-
-<%= render "students/shared/links" %>

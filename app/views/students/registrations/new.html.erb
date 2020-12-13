@@ -1,29 +1,50 @@
-<h2>Sign up</h2>
+<h2 style="margin:50px 0; text-align:center;">新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "students/shared/error_messages", resource: resource %>
+  <style>
+    .field{
+      margin:0 auto;
+      width:25%;
+    }
+    .label{
+      text-align:center;
+    }
+
+    .form{
+      width:100%;
+      margin-bottom:40px;
+    }
+  </style>
+  <div class="field">
+    <p class="label">大学配布のメールアドレス</p>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form"%>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p class="label">パスワード(6文字以上)</p>
+    <%= f.password_field :password, autocomplete: "new-password",class:"form"%>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <p class="label">確認用パスワード</p>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="action">
+  <%= f.submit "登録",class: "submit"%>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <style>
+    .submit{
+      color:white;
+      height: 50px;
+      width:150px;
+      border-radius: 20px;
+      background:#911;
+    }
+    .action{
+      text-align:center;dd
+      display:block;
+    }
+  </style>
 <% end %>
-
-<%= render "students/shared/links" %>

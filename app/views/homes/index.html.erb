@@ -1,4 +1,44 @@
-<div style ="height: 600px; background: red;">
-  <h1> Hello This MULTEST</h1>
-  <%= link_to "CLICK TO START", new_student_registration_path %>
+<div style ="height: ">
+  <div style="height:100px; width: 40%; background-image: url('assets/mt_logo.png'); background-size: cover; margin: 70px auto 15px auto;">
+  </div>
+  <h1 style="text-align:center;">あなたの<span style="color:#911;">成長</span>のための授業選択を導く</h1>
+  <p style="text-align:center; font-size:23px; margin-top:30px;">―君はまだ自分を知らない。君の<span style="color:#911;"><u>能力(Special)</u></span>を最大限活かそう！！―</p>
+  <%= link_to(new_student_registration_path,style: "text-decoration:none; color:white;") do %>
+    <div style="width:50%; height:100px; margin: 50px auto 0 auto; background:#911; border-radius:100px;">
+      <p style="width:100%; font-size:25px; margin:0 auto; padding-top:10px; text-align:center;"><b>はじめの一歩、ここから登録してみよう<br><i>Discover <u>your spesial</u></i></b></p>
+    </div>
+  <% end %>
+  <style>
+    .list{
+      height:50px;
+      margin:25px 70px;
+    }
+    .light{
+      background-image: url("assets/light.png");
+      background-size:cover;
+      width:7.5%;
+      height:50px;
+      float:left;
+    }
+    .text{
+      color:#911;
+      font-size:25px;
+      font-weight:bold;
+      padding:7px 0 0 10%;
+    }
+  </style>
+  <div style = "width:65%; height:260px; border:3px solid #555; margin: 50px auto 0 auto;">
+    <div class="list">
+      <div class="light"></div>
+      <div class="text">多重知能理論×テクノロジー(大学シラバス運用)</div>
+    </div>
+    <div class="list">
+      <div class="light"></div>
+      <div class="text">学生は完全無料で使える！</div>
+    </div>
+    <div class="list">
+      <div class="light"></div>
+      <div class="text">もう迷わない、自分の得意分野をもっと伸ばそう！</div>
+    </div>
+  </div>
 </div>

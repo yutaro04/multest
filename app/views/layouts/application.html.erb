@@ -7,9 +7,43 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+    </style>
   </head>
 
-  <body>
+  <body class ="container-fluid" style="background-color:#ddd;">
+    <header class ="row" style="height: 60px; margin:10px 0;">
+      <div style="width: 26%; background-image: url('assets/mt_logo.png'); background-size: cover;">
+      </div>
+      <div style="width: 25%; border-right: 2px solid #777; margin-left:19%;">
+        <div style="background-image: url('assets/head.png'); background-size:cover; width:40px; height:40px; margin-left: 50%;">
+        </div>
+        <div style="float:right; margin-right:5%;">多重知能理論×テクノロジーとは？</div>
+      </div>
+      <div style="width: 15%; border-right: 2px solid #777;">
+        <div style="background-image: url('assets/list.png'); background-size:cover; width:32px; height:40px; margin-left: 40%;">
+        </div>
+        <div style="float:right; margin-right:5%;">MULTESTのポイント</div>
+      </div>
+      <div style="width: 15%;">
+        <div style="background-image: url('assets/check.png'); background-size:cover; width:60px; height:40px; margin-left: 35%;">
+        </div>
+        <div style="float:right; margin-right:5%;">登録済みの方はこちら</div>
+      </div>
+      <div>
+      </div>
+    </header>
+    
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>

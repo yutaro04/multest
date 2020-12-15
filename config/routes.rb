@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
   root 'homes#index'
   namespace :students do
-    resources :tests, only: [:new,:show]
+    resources :tests, only: [:new,:show,:create,:destroy]
     get "top",to: "tests#top"
   end
   resources :students

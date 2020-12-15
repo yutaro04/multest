@@ -1,2 +1,5 @@
 次の項目から選んでいってください。
 問題がここに出る
+<%= @contents.each |content| do %>
+  <%= content.question %>
+<% end %>

@@ -1,4 +1,4 @@
-class University < ApplicationRecord
+class Lesson < ApplicationRecord
   require "selenium-webdriver"
   driver = Selenium::WebDriver.for :chrome
   driver.navigate.to "https://j29-asw.osaka-sandai.ac.jp/uniasv2/UnSSOLoginControlFree"
@@ -15,25 +15,21 @@ class University < ApplicationRecord
   driver.find_element(:name, 'ESearch').click
   wait = Selenium::WebDriver::Wait.new(timeout: 10)
   wait.until { driver.find_element(:id, 'contents').displayed? }
-  # rows = driver.find_elements(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr/td[2]")
-  rows = driver.find_elements(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr")
-  byebug
-  
+  rows1 = driver.find_elements(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr")
+  rows = rows1.map {|row1| row1.text.split }
+  genre = ["visual","introspective","language","music","interpersonal","physical","museum","pirituality","logical"]
+  num = 0
   rows.each do |row|
-    search = Lesson.new
-    search.name = row.find_element(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr/td[2]").text
-    search.professor = row.find_element(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr/td[6]").text
-    search.time = row.find_element(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr/td[5]").text
-    search.period = row.find_element(:xpath, "//div[@class='tablearea']/div[@class='scrl']//tr/td[4]").text
-    # search.evaluation = 
-    search.save
-  end  
-
-  # rows.each do |row|
-  #   search = University.new
-  #   search.name = diver.find_elements(:xpath, "td[1]")
-  #   search.save
-  # end  
-
+      search = Lesson.new
+      search.genre = genre.sample
+      search.name = row[1]
+      search.professor = row[7]
+      search.time = row[5] + row[6]
+      search.period = row[4]
+      # search.evaluation = 
+      search.save
+  end
+byebug
   driver.quit
+
 end

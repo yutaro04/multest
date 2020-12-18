@@ -12,4 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require Chart.min
+//= require jquery 
 //= require_tree .

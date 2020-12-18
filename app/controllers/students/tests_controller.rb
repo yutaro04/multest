@@ -191,6 +191,34 @@ class Students::TestsController < ApplicationController
     num = current_student.tests.count
     num -= 1
     @test = current_student.tests[num]
+    @recomends = []
+    if @test.visual >= 4
+      @recomends.push(Lesson.find_by(genre: "visual"))
+    end
+    if @test.introspective >= 4
+      @recomends.push(Lesson.find_by(genre: "introspective"))
+    end
+    if @test.language >= 4
+      @recomends.push(Lesson.find_by(genre: "language"))
+    end
+    if @test.music >= 4
+      @recomends.push(Lesson.find_by(genre: "music"))
+    end
+    if @test.interpersonal >= 4
+      @recomends.push(Lesson.find_by(genre: "interpersonal"))
+    end
+    if @test.physical >= 4
+      @recomends.push(Lesson.find_by(genre: "physical"))
+    end
+    if @test.museum >= 4
+      @recomends.push(Lesson.find_by(genre: "museum"))
+    end
+    if @test.spirituality >= 4
+      @recomends.push(Lesson.find_by(genre: "spirituality"))
+    end
+    if @test.logical >= 4
+      @recomends.push(Lesson.find_by(genre: "logical"))
+    end
   end
 
   def destroy

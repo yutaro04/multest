@@ -1,39 +1,218 @@
-結果はこちらです
-<table>
-  <tr>
-    <td>視覚・空間的知能</td>
-    <td><%= @test.visual %></td>
-  <tr>
-  <tr>
-    <td>内省的知能</td>
-    <td><%= @test.introspective %></td>
-  <tr>
-  <tr>
-    <td>言語・語学知能</td>
-    <td><%= @test.language %></td>
-  <tr>
-  <tr>
-    <td>音楽・リズム的知能</td>
-    <td><%= @test.music %></td>
-  <tr>
-  <tr>
-    <td>対人的知能</td>
-    <td><%= @test.interpersonal %></td>
-  <tr>
-  <tr>
-    <td>身体・運動的知能</td>
-    <td><%= @test.physical %></td>
-  <tr>
-  <tr>
-    <td>博物的知能</td>
-    <td><%= @test.museum %></td>
-  <tr>
-  <tr>
-    <td>霊性・実在知能</td>
-    <td><%= @test.spirituality %></td>
-  <tr>
-  <tr>
-    <td>論理・数学的知能</td>
-    <td><%= @test.logical %></td>
-  <tr>
-</table>
+<style>
+  .box{
+    margin:50px auto;
+    padding-top:25px;
+    background: #eee;
+    width:90%;
+    height:1600px;
+  }
+  .color_in{
+    color:#ff6933;
+  }
+  table{
+    border: 3px solid #555;
+    margin:40px 0 20px 10%;
+    width:30%;
+    float:left;
+  }
+  td{
+    padding: 10px;
+    border: 3px solid #555;
+  }
+  .chart{
+    width:60%;
+    float:right;
+    margin-top:50px;
+  }
+  .text_box{
+    margin:0 auto;
+    border: 2px solid #333;
+    padding:20px;
+    background: #eee;
+    width:80%;
+    height:300px;
+    line-height: 32px;
+  }
+  .text{
+    font-size:15px;
+  }
+  .top{
+    height:550px;
+  }
+  .recomend{
+    width:80%;
+    margin: 50px auto;
+  }
+  .lesson{
+    margin:20px 0;
+    text-align:center;
+  }
+  .lesson_table{
+    width:100%;
+    margin:0 auto;
+  }
+  .lesson_table tr{
+    text-align:center;
+  }
+</style>
+<div class="box">
+  <div class="top">
+    <h3 style = "text-align:center;">結果はこちらです</h3>
+    <table>
+      <tr>
+        <td><b><span class="color_in">視覚・空間的</span>知能</td>
+        <td id ="a"><%= @test.visual %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">内省的</span>知能</td>
+        <td id ="b"><%= @test.introspective %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">言語・語学</span>知能</td>
+        <td id ="c"><%= @test.language %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">音楽・リズム的</span>知能</td>
+        <td id ="d"><%= @test.music %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">対人的</span>知能</td>
+        <td id ="e"><%= @test.interpersonal %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">身体・運動的</span>知能</td>
+        <td id ="f"><%= @test.physical %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">博物的</span>知能</td>
+        <td id ="g"><%= @test.museum %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">霊性・実在</span>知能</td>
+        <td id ="h"><%= @test.spirituality %></td>
+      </tr>
+      <tr>
+        <td><b><span class="color_in">論理・数学的</span>知能</td>
+        <td id ="i"><%= @test.logical %></td>
+      </tr>
+    </table>
+    <div class="chart">
+      <canvas id="myChart"></canvas>
+    </div>
+    <script>
+      setTimeout(function(){
+        var ctx = document.getElementById("myChart");
+        var a = $('#a').text();
+        var b = $('#b').text();
+        var c = $('#c').text();
+        var d = $('#d').text();
+        var e = $('#e').text();
+        var f = $('#f').text();
+        var g = $('#g').text();
+        var h = $('#h').text();
+        var i = $('#i').text();
+        var myChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ["視覚・空間的", "内省的", "言語・語学", "音楽・リズム的", "対人的", "身体・運動的", "博物的", "霊性・実在", "論理・数学的"],
+            datasets: [{
+              label: '今回の結果',
+              backgroundColor: "rgba(0,0,80,0.4)",
+              borderColor: "rgba(0,0,80,1)",
+              data: [a,b,c,d,e,f,g,h,i]
+            }]
+          }
+        });
+      },1000);
+    </script>
+  </div>
+
+  <div class="text_box">
+    <% if  @test.visual >= 4 %>
+      <span class="text">あなたは学ぶ内容を視覚化する、色・イラスト・図を用いることで学びを深めることができます。</span>
+    <% elsif @test.visual > 3 %>
+      <span class="text">あなたは概ね学ぶ内容を視覚化する、色・イラスト・図を用いることで学びを深めることができます。</span>
+    <% elsif @test.visual < 2 %>
+      <span class="text">あなたは色・イラスト・図を用いる学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.introspective >= 4 %>
+      <span class="text">あなたは1分間の振り返りをする、目標を設定することで学びを深めることができます</span>
+    <% elsif @test.introspective > 3 %>
+      <span class="text">あなたは概ね1分間の振り返りをする、目標を設定することで学びを深めることができます。</span>
+    <% elsif @test.introspective < 2 %>
+      <span class="text">あなたは1分間の振り返りをするといった学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.language >= 4 %>
+      <span class="text">あなたは文章を読む、ブレーンストーミングをすることで学びを深めることができます。</span>
+    <% elsif @test.language > 3 %>
+      <span class="text">あなたは概ね文章を読む、ブレーンストーミングをすることで学びを深めることができます。</span>
+    <% elsif @test.language < 2 %>
+      <span class="text">あなたは文章を読む、ブレーンストーミングといった学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.music >= 4 %>
+      <span class="text">あなたは学ぶ内容を歌にする、概念を表す音色を出してみることで学びを深めることができます。</span>
+    <% elsif @test.music > 3 %>
+      <span class="text">あなたは概ね学ぶ内容を歌にする、概念を表す音色を出してみることで学びを深めることができます。</span>
+    <% elsif @test.music < 2 %>
+      <span class="text">あなたは学ぶ内容を歌にする学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.interpersonal >= 4 %>
+      <span class="text">あなたは互いに教え合う、グループで学ぶ、シミュレーションをすることで学びを深めることができます。</span>
+    <% elsif @test.interpersonal > 3 %>
+      <span class="text">あなたは概ね互いに教え合う、グループで学ぶ、シミュレーションをすることで学びを深めることができます。</span>
+    <% elsif @test.interpersonal < 2 %>
+      <span class="text">あなたはお互いに教えあう、グループで学ぶといった学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.physical >= 4 %>
+      <span class="text">あなたは作る体験から学ぶ、ものを触るといったことをすることで学びを深める事ができます。</span>
+    <% elsif @test.physical > 3 %>
+      <span class="text">あなたは概ね作る体験から学ぶ、ものを触るといったことをすることで学びを深める事ができます。</span>
+    <% elsif @test.physical < 2 %>
+      <span class="text">あなたは作る体験から学ぶ、ものを触るといった学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.museum >= 4 %>
+      <span class="text">あなたはフィールドワーク、実物を触ることで学びを深めることができます。</span>
+    <% elsif @test.museum > 3 %>
+      <span class="text">あなたは概ねフィールドワーク、実物を触ることで学びを深めることができます。</span>
+    <% elsif @test.museum < 2 %>
+      <span class="text">あなたはフィールドワーク、実物を触るといった学習方法が苦手です。</span>
+    <% end %><br>
+    <% if  @test.logical >= 4 %>
+      <span class="text">あなたは実験をする、情報を分類する、科学的視点を持つことで学びを深めることができます。</span>
+    <% elsif @test.logical > 3 %>
+      <span class="text">あなたは概ね実験をする、情報を分類する、科学的視点を持つことで学びを深めることができます。</span>
+    <% elsif @test.logical < 2 %>
+      <span class="text">あなたは情報を分類する、実験をするといった学習方法が苦手です。</span>
+    <% end %>
+  </div>
+
+  <h3 style="margin-top:150px; text-align:center;">診断結果から、あなたにおすすめの授業を表示します。</h3>
+  <div class="recomend">
+    <table class="lesson_table">
+      <tr>
+        <th>講義名</th>
+        <th>教師名</th>
+        <th>時間</th>
+        <th>期間</th>
+      </tr>
+      <% @recomends.each do |recomend| %>
+        <div class="lesson">
+          <tr>
+            <td>
+              <%= recomend.name %>
+            </td>
+            <td>
+              <%= recomend.professor %>
+            </td>
+            <td>
+              <%= recomend.time %>
+            </td>
+            <td>
+              <%= recomend.period %>
+            </td>
+          </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+</div>

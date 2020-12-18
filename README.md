@@ -1,24 +1,3 @@
-# README
+# Benesse インターン2020 チームA_右利きriot　プロダクト名「MULTEST」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##多重知能理論を用いて、自分を知り、自分の特性に合わせた授業をレコメンドするアプリ。
